@@ -1,10 +1,11 @@
 <?php
 
-class Tasks extends XML_Model {
+class Tasks extends Memory_Model {
 
     public function __construct()
     {
-        parent::__construct(APPPATH . DATAPATH, 'id');
+        parent::__construct();
+        $this->load();
     }
 
     // return -1, 0, or 1 of $a's category name is earlier, equal to, or later than $b's
