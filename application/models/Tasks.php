@@ -86,4 +86,14 @@ class Tasks extends Memory_Model {
         $this->rest->delete('job/' . $key);
         $this->load(); // because the "database" might have changed
     }
+
+    // Update a record in the DB
+    function update($record)
+    {
+        $this->rest->initialize(array('server' => REST_SERVER));
+        $this->rest->option(CURLOPT_PORT, REST_PORT);
+        $key = $record->{$this->_keyfield};
+        $retrieved = $this->rest->put('job/' . $key, $record);
+        $this->load(); // because the "database" might have changed
+    }
 }
